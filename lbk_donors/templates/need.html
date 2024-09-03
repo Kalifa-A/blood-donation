@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+    <link rel="stylesheet" href="style\fashion\style.css">
+
+
+{% block content %}
+    <div id="oops">
+        <h1>{{ messaged }}</h1>
+    </div>
+    <h1 class="emoji">{{ context.emoji }}</h1>
+
+    
+    {% if data %}
+            
+                <!-- <form method="POST" action="{% url 'Need' %}">
+                    {% csrf_token %}
+                    <div class="find">
+                        <label for="search">Search:</label>
+                    <input type="text" name="search" id="search" value="{{ request.POST.search }}">
+                    <button type="submit">Submit</button>
+                    </div>
+                </form>
+             -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Name</th>
+                    <th>AGE</th>
+                    <th>BLOOD GROUP</th>
+                    <th>NATIVE</th>
+                    <th>CONTACT</th>
+                    <th>EMAIL</th>
+                    <th>Donated date</th>
+                    <th>After donated</th>
+                    
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for mydata in data %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ mydata.name }}</td>
+                        <td>{{ mydata.age }}</td>
+                        <td>{{ mydata.bloodgroup }}</td>
+                        <td>{{ mydata.native }}</td>
+                        <td>{{ mydata.contact }}</td>
+                        <td>{{ mydata.email}}</td>
+                        <td>{{ mydata.donated_date}}</td>
+                        <td>{{ mydata.calculate_date_remain}} days</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p style="text-align: center;">After get a blood please contact admin <a>9585190698</a></p>
+    {% endif %}
+{% endblock %}

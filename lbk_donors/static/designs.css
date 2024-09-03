@@ -1,0 +1,19 @@
+
+#title{
+    color: brown;
+}
+#oops{
+    position: relative;
+    text-align: center;
+    top: 100px;
+}
+.emoji{
+    text-align: center;
+    position: relative;
+    left: 215px;
+   top: 40px;
+}
+.find{
+    text-align: center;
+    position: relative;
+}

@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <form method="POST" action="{% url 'Search' %}">
+        {% csrf_token %}
+        <div class="find">
+            <label for="search">Need blood:</label>
+        <input type="text" name="search" id="search" value="{{ request.POST.search }}"><br>
+        <label for="search">City:</label>
+        <input type="text" name="searchs" id="searchs" value="{{ request.POST.searchs }}">
+        <button type="submit">Submit</button>
+        </div>
+    </form>
+{% endblock %}

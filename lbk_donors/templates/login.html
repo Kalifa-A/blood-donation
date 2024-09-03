@@ -1,0 +1,59 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <form method="POST" action="{% url 'Login' %}">
+        {% csrf_token %}
+
+        <div>
+            <label for="login">
+                <input type="text" name="email" id="email" value="{{ request.POST.email }}" placeholder="Email">
+                <input type="password" name="password" id="password" value="{{ request.POST.password }}" placeholder="Password">
+                <button type="submit">Login</button>
+            </label>
+        </div>
+    </form>
+    {% if data %}
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Name</th>
+                    <th>AGE</th>
+                    <th>BLOOD GROUP</th>
+                    <th>NATIVE</th>
+                    <th>CONTACT</th>
+                    <th>EMAIL</th>
+                    <th>Donated date</th>
+                    <th>After donated</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if data %}
+                {% for data in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ data.name }}</td>
+                    <td>{{ data.age }}</td>
+                    <td>{{ data.bloodgroup }}</td>
+                    <td>{{ data.native }}</td>
+                    <td>{{ data.contact }}</td>
+                    <td>{{ data.email}}</td>
+                    <td>{{ data.donated_date}}</td>
+                    <td>{{ data.calculate_date_remain}} days</td>
+                    <td><a class="btn btn-success" href="updateData/{{data.id}}">update</a></td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7">no data available</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+            
+    {% endif %}
+
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
+{% endblock %}
